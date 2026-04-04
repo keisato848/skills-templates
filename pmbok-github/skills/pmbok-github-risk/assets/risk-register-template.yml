@@ -1,0 +1,88 @@
+# Risk Register — Issue Template
+#
+# リスク登録テンプレートを生成する際にこのテンプレートを再利用する。
+
+name: "🚨 リスク登録"
+description: "プロジェクトリスクを登録する"
+title: "[RISK] "
+labels: ["type:risk"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## リスク情報を入力してください
+
+  - type: input
+    id: risk-title
+    attributes:
+      label: リスク名
+      description: リスクの簡潔な名称
+      placeholder: "例: 主要メンバーの離脱"
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk-description
+    attributes:
+      label: リスクの詳細
+      description: リスクの内容と背景を記述
+    validations:
+      required: true
+
+  - type: dropdown
+    id: risk-probability
+    attributes:
+      label: 発生確率
+      options:
+        - 低 (1)
+        - 中 (2)
+        - 高 (3)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: risk-impact
+    attributes:
+      label: 影響度
+      options:
+        - 低 (1)
+        - 中 (2)
+        - 高 (3)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: risk-category
+    attributes:
+      label: リスクカテゴリ
+      options:
+        - 技術リスク
+        - スケジュールリスク
+        - リソースリスク
+        - 外部リスク
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk-mitigation
+    attributes:
+      label: 対応策
+      description: リスクの軽減・回避策を記述
+    validations:
+      required: true
+
+  - type: input
+    id: risk-owner
+    attributes:
+      label: リスクオーナー
+      description: "@username 形式で指定"
+      placeholder: "@username"
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk-trigger
+    attributes:
+      label: トリガー条件
+      description: このリスクが顕在化する兆候・条件

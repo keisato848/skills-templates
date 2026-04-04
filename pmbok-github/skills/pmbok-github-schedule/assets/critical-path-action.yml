@@ -1,0 +1,96 @@
+# Critical Path Detection — GitHub Actions Template
+# Trigger: scheduled (weekly) or manual dispatch
+# Purpose: Identify critical path tasks and label them
+
+name: Critical Path Detection
+
+on:
+  schedule:
+    # Every Monday at 00:00 UTC (09:00 JST)
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+env:
+  PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+  OWNER: ${{ github.repository_owner }}
+  REPO: ${{ github.event.repository.name }}
+
+jobs:
+  detect-critical-path:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch project items via GraphQL
+        id: fetch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Fetch all project items with dates and dependencies
+          gh api graphql -f query='
+            query($owner: String!, $number: Int!) {
+              user(login: $owner) {
+                projectV2(number: $number) {
+                  items(first: 100) {
+                    nodes {
+                      id
+                      content {
+                        ... on Issue {
+                          number
+                          title
+                          state
+                          trackedInIssues(first: 10) {
+                            nodes { number }
+                          }
+                        }
+                      }
+                      fieldValues(first: 20) {
+                        nodes {
+                          ... on ProjectV2ItemFieldDateValue {
+                            date
+                            field { ... on ProjectV2Field { name } }
+                          }
+                          ... on ProjectV2ItemFieldSingleSelectValue {
+                            name
+                            field { ... on ProjectV2SingleSelectField { name } }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' -f owner="$OWNER" -F number="$PROJECT_NUMBER" > project_data.json
+
+      - name: Calculate critical path
+        run: |
+          # Parse project data and calculate forward/backward pass
+          # Tasks with Float = 0 are on the critical path
+          python3 scripts/critical-path-calc.py project_data.json > critical_tasks.json
+
+      - name: Label critical path tasks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Add critical-path label to identified tasks
+          for issue_number in $(jq -r '.[]' critical_tasks.json); do
+            gh issue edit "$issue_number" --add-label "critical-path" -R "$OWNER/$REPO" || true
+          done
+
+      - name: Remove label from non-critical tasks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Remove critical-path label from tasks no longer on critical path
+          gh issue list --label "critical-path" --json number -R "$OWNER/$REPO" | \
+            jq -r '.[].number' | while read num; do
+              if ! jq -e ".[] == $num" critical_tasks.json > /dev/null 2>&1; then
+                gh issue edit "$num" --remove-label "critical-path" -R "$OWNER/$REPO" || true
+              fi
+            done
