@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"テスト未設定\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["agent-skills", "copilot", "harness"],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Harness 最適化された Agent Skills 開発テンプレート",
   "dependencies": {
     "copilot-agent-builder": "^0.1.2"
   }

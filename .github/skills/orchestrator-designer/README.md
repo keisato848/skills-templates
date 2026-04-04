@@ -1,42 +1,42 @@
 # orchestrator-designer
 
-AGENTS.md Orchestrator design with WHEN/DO routing, phase gates, and multi-skill workflow coordination.
+WHEN/DO ルーティング、Phase ゲート、マルチスキルワークフロー調整を含む AGENTS.md オーケストレーター設計スキル。
 
-## What It Does
+## 機能
 
-Designs AGENTS.md files that coordinate multiple Agent Skills through structured WHEN/DO routing patterns, phase transition rules, task classification trees, urgency triage, and prohibited operations.
+構造化された WHEN/DO ルーティングパターン、Phase 遷移ルール、タスク分類ツリー、緊急度トリアージ、禁止事項を通じて複数の Agent Skills を連携させる AGENTS.md を設計する。
 
-## When to Use
+## 使用場面
 
-- Setting up a new multi-skill workflow that needs structured routing.
-- Designing phase transitions with approval gates between skills.
-- Creating task classification trees for automatic skill selection.
-- Generating AGENTS.md files for skill suites.
+- 構造化されたルーティングが必要な新しいマルチスキルワークフローを構築する
+- スキル間の承認ゲート付き Phase 遷移を設計する
+- 自動スキル選択のためのタスク分類ツリーを作成する
+- スキルスイート用の AGENTS.md を生成する
 
-## How It Works
+## 動作の流れ
 
-1. **Collect**: Gather available skills and their descriptions.
-2. **Design**: Create WHEN/DO routing rules (5-7 patterns recommended).
-3. **Gate**: Define phase transitions with approval points (⏸️) at critical junctures.
-4. **Triage**: Add urgency-based workflow variants (normal/urgent/critical).
-5. **Prohibit**: Explicitly state what the agent must NOT do.
-6. **Validate**: Ensure all skills are routed, no keyword conflicts, approval points present.
+1. **収集**: 利用可能なスキルとその description を収集
+2. **設計**: WHEN/DO ルーティングルールを作成（5〜7パターン推奨）
+3. **ゲート**: 重要なポイントに承認ポイント（⏸️）付きの Phase 遷移を定義
+4. **トリアージ**: 緊急度に応じたワークフローバリエーション（通常/急ぎ/至急）を追加
+5. **禁止事項**: エージェントがやってはならないことを明示
+6. **検証**: 全スキルがルーティングされ、キーワード競合なし、承認ポイントが存在することを確認
 
-## Output Structure
+## 出力構成
 
-The generated AGENTS.md includes:
-- YAML frontmatter with suite-level `name` and `description`
-- WHEN/DO dispatch rules
-- Task classification decision tree
-- Full workflow with phase gates
-- Urgency triage table
-- Prohibited operations
-- Quality Gates with verification loop
-- Gotchas (3+ items)
+生成される AGENTS.md には以下が含まれる:
+- スイートレベルの `name` と `description` を含む YAML フロントマター
+- WHEN/DO ディスパッチルール
+- タスク分類デシジョンツリー
+- Phase ゲート付きフルワークフロー
+- 緊急度トリアージテーブル
+- 禁止事項
+- 検証ループ付き Quality Gates
+- Gotchas（3項目以上）
 
-## Key Rules
+## 基本ルール
 
-- AGENTS.md is the suite root file — deployed to `<project>/.github/AGENTS.md`.
-- Keep WHEN/DO patterns to 5-7 (more than 10 causes unstable routing).
-- Approval gates (⏸️) at critical decisions only (not every phase).
-- Always include urgency triage for flexible workflow execution.
+- AGENTS.md はスイートのルートファイル。デプロイ先は `<project>/.github/AGENTS.md`
+- WHEN/DO パターンは5〜7個に抑える（10個以上はルーティングが不安定になる）
+- 承認ゲート（⏸️）は重要な判断ポイントのみに設置（全 Phase には不要）
+- 柔軟なワークフロー実行のため、必ず緊急度トリアージを含める

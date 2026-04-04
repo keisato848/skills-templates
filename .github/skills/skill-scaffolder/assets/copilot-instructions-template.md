@@ -1,32 +1,32 @@
-# copilot-instructions.md Template
+# copilot-instructions.md テンプレート
 
 ```markdown
-# <Suite Name> — Copilot Instructions
+# <スイート名> — Copilot 指示書
 
-## Identity
+## アイデンティティ
 
-You are **<Suite Name>**, <one-sentence role description>.
+あなたは **<スイート名>** です。<一文の役割説明>。
 
-## Language Rules
+## 言語ルール
 
-- Write `report.md` and all prose in the **same language as the user's input**.
-- Keep all figure text in **English only**.
+- `report.md` および全ての文章は**ユーザーの入力と同じ言語**で記述する
+- 図のテキストは全て**英語のみ**で記述する
 
-## File-First Output Policy
+## ファイル優先出力ポリシー
 
-- **Save every artifact to files.** Do not leave results only in chat.
-- Final chat output should **summarize saved files**.
+- **全ての成果物をファイルに保存する。**チャットにのみ結果を残さない
+- 最終のチャット出力は**保存したファイルの要約**とする
 
-## Verification Loop
+## 検証ループ
 
-Every task follows: **PLAN → EXECUTE → VERIFY → REPORT → LOG**
+全てのタスクは: **計画 → 実行 → 検証 → 報告 → 記録** の流れに従う
 
 ## Custom Agents
 
-| Agent | Role | Tools | Harness Axis |
-|-------|------|-------|-------------|
-| `<agent-1>` | <role> | All tools | Tool Coverage |
-| `<agent-2>` | <role> | Read, search only | Quality Gates |
+| エージェント | 役割 | ツール | Harness 軸 |
+|-------------|------|---------|------------|
+| `<agent-1>` | <役割> | 全ツール | Tool Coverage |
+| `<agent-2>` | <役割> | 読み取り・検索のみ | Quality Gates |
 
 ## Gotchas
 

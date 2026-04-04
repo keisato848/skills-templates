@@ -1,60 +1,60 @@
-# SKILL.md Template
+# SKILL.md テンプレート
 
 ```markdown
 ---
-name: <skill-name>
+name: <スキル名>
 description: |
-  <What this skill does.>
-  Use when <trigger conditions>.
+  <このスキルが何をするか。>
+  <起動条件>の場合に使用する。
 ---
 
-# <Skill Title>
+# <スキルタイトル>
 
-<One-line description.>
+<一行の説明。>
 
-## Use This Skill When
+## このスキルを使用する場面
 
-- <Condition 1>.
-- <Condition 2>.
-- <Condition 3>.
+- <条件1>
+- <条件2>
+- <条件3>
 
-## Required Inputs
+## 必須入力
 
-- <Input 1>.
-- <Input 2>.
+- <入力1>
+- <入力2>
 
-## Workflow
+## ワークフロー
 
-1. <Step 1>.
-2. <Step 2>.
-3. <Step 3>.
+1. <ステップ1>
+2. <ステップ2>
+3. <ステップ3>
 
-## Deliverables
+## 成果物
 
-- `report.md`: <description>.
-- `results/`: <description>.
+- `report.md`: <説明>
+- `results/`: <説明>
 
 ## Quality Gates
 
-- [ ] <Gate 1>.
-- [ ] <Gate 2>.
-- [ ] <Gate 3>.
+- [ ] <ゲート1>
+- [ ] <ゲート2>
+- [ ] <ゲート3>
 
 ## Gotchas
 
-- <Specific pitfall 1>
-- <Specific pitfall 2>
-- <Specific pitfall 3>
+- <具体的な落とし穴1>
+- <具体的な落とし穴2>
+- <具体的な落とし穴3>
 
-## Validation Loop
+## 検証ループ
 
-1. Execute and generate outputs
-2. Check:
-   - <Validation criterion 1>
-   - <Validation criterion 2>
-3. If any check fails:
-   - Identify the failing gate
-   - Fix the specific issue
-   - Re-run validation
-4. Proceed only after all gates pass
+1. 実行して出力を生成
+2. チェック:
+   - <検証基準1>
+   - <検証基準2>
+3. 不合格の場合:
+   - 失敗したゲートを特定
+   - 具体的な問題を修正
+   - 検証を再実行
+4. 全ゲート合格後のみ次へ進む
 ```

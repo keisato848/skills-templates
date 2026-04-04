@@ -1,39 +1,39 @@
 # harness-auditor
 
-Harness 7-axis scoring and remediation guidance for Agent Skills quality assessment.
+Harness 7軸フレームワークによる Agent Skills 品質評価・スコアリングと改善ガイダンス。
 
-## What It Does
+## 機能
 
-Audits Agent Skills and their surrounding environment (AGENTS.md, Custom Agents, assets, references, MCP config) against the Harness 7-axis framework. Produces a scored report with prioritized improvement recommendations.
+Agent Skills とその周辺環境（AGENTS.md、Custom Agents、assets、references、MCP 設定）を Harness 7軸フレームワークで監査する。優先度付きの改善提案を含むスコアリングレポートを生成する。
 
-## When to Use
+## 使用場面
 
-- Evaluating the quality of a skill or suite before release.
-- Diagnosing why a skill underperforms or isn't activated.
-- Running a pre-merge or pre-commit quality check.
-- Scoring harness maturity (Beginner → Intermediate → Advanced → Expert).
+- リリース前にスキルやスイートの品質を評価したい
+- スキルが性能不足や未起動の原因を診断したい
+- マージ前・コミット前の品質チェックを実施したい
+- Harness 成熟度をスコアリングしたい（Beginner → Intermediate → Advanced → Expert）
 
-## The 7 Axes
+## 7軸の評価項目
 
-| # | Axis | What It Checks |
-|---|------|---------------|
-| 1 | Tool Coverage | Description quality, keyword separation, WHEN/DO routing, Agent-Axis mapping |
-| 2 | Context Efficiency | SKILL.md line count, conditional references, assets/references usage |
-| 3 | Quality Gates | Validation loops, failure recovery, checklists |
-| 4 | Memory Persistence | Gotchas specificity, learning-capture skill, compaction resilience |
-| 5 | Eval Coverage | Validation loops, CI integration points |
-| 6 | Security Guardrails | Prohibited operations, data handling, read-only agents |
-| 7 | Cost Efficiency | MCP limits, default tools, compact design |
+| # | 軸 | 評価内容 |
+|---|-----|--------|
+| 1 | Tool Coverage | description の品質、キーワード棲み分け、WHEN/DO ルーティング、Agent→軸マッピング |
+| 2 | Context Efficiency | SKILL.md の行数、条件付き参照、assets/references の活用 |
+| 3 | Quality Gates | 検証ループ、失敗時リカバリ、チェックリスト |
+| 4 | Memory Persistence | Gotchas の具体性、学びの収集スキル、コンパクション耐性 |
+| 5 | Eval Coverage | バリデーションループ、CI 統合ポイント |
+| 6 | Security Guardrails | 禁止事項、データ取り扱い、読み取り専用エージェント |
+| 7 | Cost Efficiency | MCP 上限、デフォルトツール、簡潔な設計 |
 
-## Scoring
+## スコアリング
 
-- **0**: Not addressed
-- **1**: Basic implementation
-- **2**: Good implementation
-- **3**: Expert implementation
+- **0**: 未対応
+- **1**: 基本対応
+- **2**: 良好
+- **3**: 優秀
 
-Maturity levels: Beginner (0–7) / Intermediate (8–14) / Advanced (15–18) / Expert (19–21)
+成熟度: Beginner (0–7) / Intermediate (8–14) / Advanced (15–18) / Expert (19–21)
 
-## Output
+## 出力
 
-Produces a structured audit report with per-axis scores, severity-rated findings (🔴/🟡/🟢), and specific remediation actions.
+軸ごとのスコア、重大度別の指摘事項（🔴/🟡/🟢）、具体的な改善アクションを含む構造化された監査レポートを生成。

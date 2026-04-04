@@ -1,70 +1,70 @@
-# AGENTS.md Template
+# AGENTS.md テンプレート
 
 ```markdown
 ---
-name: <suite-name>
+name: <スイート名>
 description: |
-  <Suite description. What it does and what it covers.>
-  Use when <trigger conditions>.
+  <スイートの説明。何をするか、何をカバーするか。>
+  <起動条件>の場合に使用する。
 ---
 
-# <Suite Title> v0.1.0
+# <スイートタイトル> v0.1.0
 
-<One-line summary>. Route work to the narrowest sub-skill, save all outputs as files.
+<一行要約>。最も適切なサブスキルにルーティングし、全ての出力をファイルに保存する。
 
-## Core Rules
+## 基本ルール
 
-- Write `report.md` in the same language as the user's input.
-- Save every artifact to files. Do not leave results only in chat.
-- Prefer the narrowest matching sub-skill.
+- `report.md` はユーザーの入力と同じ言語で記述する
+- 全ての成果物をファイルに保存する。チャットにのみ結果を残さない
+- 最も適切なサブスキルを優先する
 
-## Routing Rules
+## ルーティングルール
 
-### WHEN/DO Dispatch
+### WHEN/DO ディスパッチ
 
-WHEN: <trigger condition 1>
-DO: → `<suite-name>-<skill-1>`
+WHEN: <起動条件1>
+DO: → `<スイート名>-<スキル1>`
 
-WHEN: <trigger condition 2>
-DO: → `<suite-name>-<skill-2>`
+WHEN: <起動条件2>
+DO: → `<スイート名>-<スキル2>`
 
-### Task Classification
+### タスク分類
 
-1. <Decision question 1>?
-   - YES → `<suite-name>-<skill-1>`
-   - NO → next
-2. <Decision question 2>?
-   - YES → `<suite-name>-<skill-2>`
-   - NO → Answer directly
+1. <判定質問1>？
+   - YES → `<スイート名>-<スキル1>`
+   - NO → 次へ
+2. <判定質問2>？
+   - YES → `<スイート名>-<スキル2>`
+   - NO → 直接回答
 
-### Full Workflow
+### フルワークフロー
 
-Phase 0 → `<suite-name>-<skill-1>`: <description> ⏸️ User approval
-Phase 1 → `<suite-name>-<skill-2>`: <description>
-Phase 2 → `<suite-name>-<skill-3>`: <description> ⏸️ User approval
+Phase 0 → `<スイート名>-<スキル1>`: <説明> ⏸️ ユーザー承認
+Phase 1 → `<スイート名>-<スキル2>`: <説明>
+Phase 2 → `<スイート名>-<スキル3>`: <説明> ⏸️ ユーザー承認
 
-### Urgency Triage
+### 緊急度トリアージ
 
-| Urgency | Keywords | Workflow |
-|---------|----------|---------|
-| Normal | (default) | Full workflow |
-| Urgent | "urgent", "ASAP" | Abbreviated |
-| Critical | "immediately" | Summary only |
+| 緊急度 | キーワード | ワークフロー |
+|--------|-----------|------------|
+| 通常 | （デフォルト） | フル実行 |
+| 急ぎ | 「急ぎ」「ASAP」 | 省略版 |
+| 至急 | 「至急」「今すぐ」 | 概要のみ |
 
-## Verification Loop
+## 検証ループ
 
-PLAN → EXECUTE → VERIFY → REPORT → LOG
+計画 → 実行 → 検証 → 報告 → 記録
 
 ## Quality Gates
 
-- [ ] <Gate 1>
-- [ ] <Gate 2>
-- [ ] <Gate 3>
+- [ ] <ゲート1>
+- [ ] <ゲート2>
+- [ ] <ゲート3>
 
-## Prohibited Operations
+## 禁止事項
 
-- <Prohibition 1>
-- <Prohibition 2>
+- <禁止事項1>
+- <禁止事項2>
 
 ## Gotchas
 

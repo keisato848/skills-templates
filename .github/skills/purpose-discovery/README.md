@@ -1,31 +1,31 @@
 # purpose-discovery
 
-Structured requirements elicitation for Agent Skills development through one-question-at-a-time dialogue.
+1問1答の構造化ダイアログによる Agent Skills 開発の要件明確化スキル。
 
-## What It Does
+## 機能
 
-Evaluates user input against 8 required elements (PURPOSE, DOMAIN, AUDIENCE, SCOPE, WORKFLOWS, INTEGRATIONS, REFERENCE MODEL, QUALITY CRITERIA) and conducts targeted dialogue to fill gaps before skill generation begins.
+ユーザー入力を8つの必須要素（PURPOSE、DOMAIN、AUDIENCE、SCOPE、WORKFLOWS、INTEGRATIONS、REFERENCE MODEL、QUALITY CRITERIA）で評価し、スキル生成前に不足情報を対話で補完する。
 
-## When to Use
+## 使用場面
 
-- A user requests Agent Skills development but the request is vague or incomplete.
-- Key information (domain, audience, workflows, integrations) is missing.
-- Requirements need structuring into an optimized specification before generation.
+- ユーザーが Agent Skills 開発を依頼したが、リクエストが曖昧または不完全
+- 重要な情報（ドメイン、対象ユーザー、ワークフロー、連携先）が不足している
+- 生成前に要件を構造化された仕様書にまとめる必要がある
 
-## How It Works
+## 動作の流れ
 
-1. **Sufficiency Check**: Evaluate user input against 8 elements. If 5+ are clear, proceed directly.
-2. **1Q1A Dialogue**: Ask exactly one question per turn (closed/choice preferred). Maximum 8 rounds.
-3. **Structured Spec**: Compile answers into a standardized specification template.
-4. **User Approval**: Present spec for approval before passing to `skill-scaffolder`.
+1. **充足度チェック**: ユーザー入力を8要素で評価。5/8以上が明確なら直接次へ進む
+2. **1問1答ダイアログ**: 1ターンにつき1問のみ質問（閉じた質問・選択肢付き推奨）。最大8ラウンド
+3. **構造化仕様書**: 回答を標準化された仕様書テンプレートにまとめる
+4. **ユーザー承認**: `skill-scaffolder` に渡す前に仕様書の承認を得る
 
-## Key Rules
+## 基本ルール
 
-- **One question at a time** — never batch multiple questions.
-- **Closed questions preferred** — faster for the user, more precise answers.
-- **Maximum 8 rounds** — after 8, proceed with stated assumptions.
-- **User approval required** — no generation without approved specification.
+- **1回に1問のみ** — 複数の質問を同時に投げてはならない
+- **閉じた質問を優先** — ユーザーにとって速く、回答が正確になる
+- **最大8ラウンド** — 8ラウンド後は仮定を明記して進む
+- **ユーザー承認必須** — 承認なしでスキル生成を開始しない
 
-## Integration
+## 連携
 
-This skill is invoked automatically by `skill-scaffolder` (Phase 0) and `skill-developer` agent when user input has fewer than 5/8 elements clearly defined.
+ユーザー入力の明確な要素が 5/8 未満の場合、`skill-scaffolder`（Phase 0）および `skill-developer` エージェントから自動的に呼び出される。

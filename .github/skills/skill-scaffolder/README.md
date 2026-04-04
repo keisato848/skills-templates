@@ -1,32 +1,32 @@
 # skill-scaffolder
 
-Full-suite Agent Skills package generator with Harness optimization built in.
+Harness 最適化を組み込んだフルスイート Agent Skills パッケージ生成スキル。
 
-## What It Does
+## 機能
 
-Generates complete Agent Skills packages — from single skills to full suites with AGENTS.md orchestrators, Custom Agents, copilot-instructions.md, MCP configuration, and supplementary directories (assets/references/scripts).
+単体スキルからフルスイート（AGENTS.md オーケストレーター、Custom Agents、copilot-instructions.md、MCP 設定、補助ディレクトリ含む）まで、完全な Agent Skills パッケージを生成する。
 
-## When to Use
+## 使用場面
 
-- Creating a new Agent Skill suite from scratch.
-- Bootstrapping a single skill with Harness patterns.
-- Generating suite infrastructure (AGENTS.md, agents/, .mcp.json).
+- 新しい Agent Skill スイートをゼロから作成する
+- 単体スキルを Harness パターンでブートストラップする
+- スイートインフラ（AGENTS.md、agents/、.mcp.json）を生成する
 
-## How It Works
+## 動作の流れ
 
-1. **Phase 0 — Purpose Discovery**: Evaluate input sufficiency (8 elements). If gaps exist, route to `purpose-discovery` for 1Q1A dialogue.
-2. **Phase 1 — Package Generation**: Generate metadata, AGENTS.md, copilot-instructions, agents, sub-skills, and MCP config.
-3. **Phase 2 — Supplementary Directory Assessment**: For each skill, evaluate whether assets/ (templates), references/ (detailed definitions), or scripts/ (validation code) are needed. Create and add conditional references.
-4. **Phase 3 — Harness 7-Axis Check**: Score all generated skills against 7 axes targeting 3/3. Fix any axis below threshold.
+1. **Phase 0 — Purpose Discovery**: 入力の充足度を評価（8要素）。不足があれば `purpose-discovery` で1問1答ダイアログへ
+2. **Phase 1 — パッケージ生成**: メタデータ、AGENTS.md、copilot-instructions、agents、サブスキル、MCP 設定を生成
+3. **Phase 2 — 補助ディレクトリ評価**: 各スキルに対して assets/（テンプレート）、references/（詳細定義）、scripts/（バリデーションコード）の必要性を判定。作成して条件付き参照を追加
+4. **Phase 3 — Harness 7軸チェック**: 全生成スキルを7軸でスコアリング（3/3 目標）。閾値未満の軸を修正
 
-## Key Features
+## 主な機能
 
-- 3 output templates available in `assets/`: AGENTS.md, SKILL.md, copilot-instructions.md
-- Suite completeness checklist in `references/suite-checklist.md`
-- Supplementary directory decision guide (when to create assets/references/scripts)
-- Mandatory Harness 7-axis post-generation validation
+- `assets/` に3つの出力テンプレートを用意: AGENTS.md、SKILL.md、copilot-instructions.md
+- `references/suite-checklist.md` にスイート完全性チェックリスト
+- 補助ディレクトリ判定ガイド（assets/references/scripts を作成する条件）
+- 生成後の Harness 7軸バリデーション必須
 
-## Supplementary Files
+## 補助ファイル
 
 ```
 skill-scaffolder/

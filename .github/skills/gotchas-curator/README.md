@@ -1,35 +1,35 @@
 # gotchas-curator
 
-Consulting learning capture and Gotchas maintenance for Memory Persistence across Agent Skills.
+学びの収集と Gotchas セクションの管理を通じて、Agent Skills 全体の Memory Persistence を実現するスキル。
 
-## What It Does
+## 機能
 
-Captures learnings from completed tasks, agent mistakes, and edge cases, then records them as concrete, actionable Gotcha entries in the relevant skill's SKILL.md. Implements the Memory Persistence axis of the Harness 7-axis framework.
+完了したタスク、エージェントのミス、エッジケースから学びを収集し、具体的で実行可能な Gotcha エントリとして関連スキルの SKILL.md に記録する。Harness 7軸フレームワークの Memory Persistence 軸を実装する。
 
-## When to Use
+## 使用場面
 
-- An agent made a mistake that should be prevented in future sessions.
-- A task revealed an unexpected edge case or pitfall.
-- A review identified an improvement opportunity.
-- Completing a task and recording lessons learned.
+- エージェントが今後のセッションで防ぐべきミスをした
+- タスクで予期しないエッジケースや落とし穴が判明した
+- レビューで改善の機会が見つかった
+- タスク完了時に学びを記録したい
 
-## How It Works
+## 動作の流れ
 
-1. **Identify**: What happened, why it matters, which skill is affected.
-2. **Structure**: Format as a 1-2 line, concrete, actionable Gotcha entry.
-3. **Validate**: Check for duplicates, verify specificity (no generic advice), confirm target skill stays under 500 lines.
-4. **Apply**: Add to the target skill's Gotchas section.
+1. **特定**: 何が起きたか、なぜ重要か、どのスキルに影響するか
+2. **構造化**: 1〜2行の具体的で実行可能な Gotcha エントリとしてフォーマット
+3. **検証**: 重複チェック、具体性の確認（汎用的な助言は不可）、対象スキルが500行以内か確認
+4. **適用**: 対象スキルの Gotchas セクションに追記
 
-## Good vs Bad Gotchas
+## 良い Gotcha と悪い Gotcha
 
 ```
-✅ Good: "JWT tokens without `exp` claim must be rejected. Never allow tokens without expiration."
-❌ Bad:  "Be careful with security."
+✅ 良い例: "JWT トークンに `exp` クレームがない場合は拒否する。有効期限なしのトークンを許容してはならない"
+❌ 悪い例: "セキュリティに注意すること"
 ```
 
-## Key Rules
+## 基本ルール
 
-- Gotchas must include specific commands, values, or thresholds — not generic advice.
-- One Gotcha per location — don't duplicate across multiple skills.
-- Record learnings immediately after the mistake occurs (details fade with time).
-- If a skill's Gotchas exceed 10 items, organize by category.
+- Gotchas には具体的なコマンド、値、閾値を含める。汎用的な助言は不可
+- 1つの Gotcha は1箇所にのみ記載。複数スキルに重複して記載しない
+- 学びはミス発生直後に記録する（時間が経つと詳細を忘れる）
+- スキルの Gotchas が10項目を超えたらカテゴリ別に整理する

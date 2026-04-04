@@ -1,9 +1,9 @@
 ---
 name: description-optimizer
 description: >
-  Optimize Agent Skill description fields for maximum routing precision
-  and discovery accuracy. Use when a skill is not being activated correctly,
-  descriptions overlap between skills, or improving Tool Coverage score.
+  Agent Skill の description フィールドを最適化し、ルーティング精度と発見精度を最大化する。
+  スキルが正しく起動されない、description がスキル間で重複している、
+  Tool Coverage スコアを改善したい場合に使用する。
 metadata:
   author: coreclaw
   version: "1.0"

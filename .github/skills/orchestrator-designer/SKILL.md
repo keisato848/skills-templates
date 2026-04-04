@@ -1,10 +1,10 @@
 ---
 name: orchestrator-designer
 description: >
-  Design AGENTS.md Orchestrator configurations with WHEN/DO routing patterns,
-  phase gates, urgency triage, and multi-skill workflow coordination.
-  Use when setting up a new multi-skill workflow, designing phase transitions,
-  creating task classification trees, or generating AGENTS.md files for suites.
+  WHEN/DO ルーティングパターン、Phase ゲート、緊急度トリアージ、
+  マルチスキルワークフロー調整を含む AGENTS.md オーケストレーターを設計する。
+  新しいマルチスキルワークフローの構築、Phase 遷移の設計、
+  タスク分類ツリーの作成、スイート用 AGENTS.md の生成時に使用する。
 metadata:
   author: coreclaw
   version: "2.0"
@@ -12,7 +12,7 @@ metadata:
 
 # Orchestrator Designer
 
-Design AGENTS.md Orchestrator files with WHEN/DO routing for multi-skill suites.
+マルチスキルスイート向けに WHEN/DO ルーティングを備えた AGENTS.md オーケストレーターを設計する。
 
 ## 設計手順
 

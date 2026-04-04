@@ -1,11 +1,11 @@
 ---
 name: skill-scaffolder
 description: >
-  Generate Harness-optimized Agent Skill packages with full suite support.
-  Creates AGENTS.md orchestrators, SKILL.md sub-skills, Custom Agents,
-  copilot-instructions.md, .mcp.json, and assets/references/scripts directories.
-  Use when creating a new skill suite from scratch, bootstrapping a skill folder,
-  or generating any component of a Harness-optimized skill package.
+  Harness 最適化された Agent Skill パッケージをフルスイート対応で生成する。
+  AGENTS.md オーケストレーター、SKILL.md サブスキル、Custom Agents、
+  copilot-instructions.md、.mcp.json、assets/references/scripts ディレクトリを作成する。
+  新規スキルスイートのゼロからの作成、スキルフォルダのブートストラップ、
+  Harness 最適化スキルパッケージのコンポーネント生成時に使用する。
 metadata:
   author: coreclaw
   version: "2.0"
@@ -13,15 +13,15 @@ metadata:
 
 # Skill Scaffolder
 
-Generate Harness-optimized Agent Skill packages — from single skills to full suites.
+Harness 最適化された Agent Skill パッケージを生成する——単体スキルからフルスイートまで。
 
-## Use This Skill When
+## このスキルを使用する場面
 
-- Creating a new Agent Skill suite from scratch.
-- Bootstrapping a single skill with Harness patterns.
-- Generating suite infrastructure (AGENTS.md, agents/, .mcp.json).
+- 新しい Agent Skill スイートをゼロから作成する
+- 単体スキルを Harness パターンでブートストラップする
+- スイートインフラ（AGENTS.md、agents/、.mcp.json）を生成する
 
-## Workflow
+## ワークフロー
 
 ### Phase 0: Purpose Discovery（必須 — 情報不足時に1問1答で要件を収集）
 
@@ -33,23 +33,23 @@ Generate Harness-optimized Agent Skill packages — from single skills to full s
 4. 収集完了後、構造化仕様書を生成しユーザー承認を得る ⏸️
 5. 承認済み仕様書を元に Phase 1 へ進む
 
-### Phase 1: Package Generation
+### Phase 1: パッケージ生成
 
-1. Determine package type:
-   - **Single skill**: SKILL.md only
-   - **Suite**: AGENTS.md + multiple SKILL.md + agents/ + copilot-instructions.md
+1. パッケージ種別を判定:
+   - **単体スキル**: SKILL.md のみ
+   - **スイート**: AGENTS.md + 複数 SKILL.md + agents/ + copilot-instructions.md
 
-2. For suites, generate in order:
+2. スイートの場合、以下の順序で生成:
    a. `group.json`, `skill.json`, `README.md`
-   b. `AGENTS.md` (Orchestrator with WHEN/DO routing)
-   c. `copilot-instructions.md` (suite-specific conventions)
-   d. `agents/*.md` (Custom Agents with tool restrictions)
-   e. `skills/<skill-name>/SKILL.md` (each sub-skill)
-   f. `.mcp.json` (if external tools needed)
+   b. `AGENTS.md`（WHEN/DO ルーティング付きオーケストレーター）
+   c. `copilot-instructions.md`（スイート固有の規約）
+   d. `agents/*.md`（ツール制限付き Custom Agents）
+   e. `skills/<skill-name>/SKILL.md`（各サブスキル）
+   f. `.mcp.json`（外部ツールが必要な場合）
 
-3. For each SKILL.md, include:
-   - Frontmatter: `name`, `description` (+ `tu_tools` if MCP)
-   - Body: Use This Skill When, Workflow, Deliverables, Quality Gates, Gotchas (3+), Validation Loop
+3. 各 SKILL.md に含める内容:
+   - フロントマター: `name`, `description`（MCP 利用時は `tu_tools` も）
+   - 本文: 使用場面、ワークフロー、成果物、Quality Gates、Gotchas（3項目以上）、検証ループ
 
 4. **Supplementary Directory Assessment（必須）**:
    生成した各スキルに対して、以下の判定を実行し、結果に応じて作成する。
@@ -74,29 +74,29 @@ Generate Harness-optimized Agent Skill packages — from single skills to full s
    - 作成した references/ は「いつ読むか」が明示されているか
    - 判定の結果「不要」となったディレクトリは作成しない
 
-5. Add conditional references in SKILL.md:
-   - ✅ `Reuse assets/output-template.md when producing standardized analysis output`
-   - ✅ `Read references/api-errors.md when API returns non-200 status`
-   - ❌ `See references/ for details`
+5. SKILL.md に条件付き参照を追加:
+   - ✅ `標準化された分析出力を生成する際に assets/output-template.md を再利用する`
+   - ✅ `API が 200 以外のステータスを返した場合に references/api-errors.md を読む`
+   - ❌ `詳細は references/ を参照`
 
-6. Self-validation (see Validation Loop)
+6. セルフバリデーション（検証ループを参照）
 
-## Supplementary Directory Decision Guide
+## 補助ディレクトリ判定ガイド
 
-| Condition | Action |
-|-----------|--------|
-| Skill produces reports with fixed structure | Create `assets/` with report templates |
-| Reference content exceeds 100 lines | Move to `references/` with conditional refs |
-| Validation needs executable checks | Create `scripts/` with validation code |
-| Skill is self-contained and compact | No supplementary dirs needed |
+| 条件 | アクション |
+|------|------------|
+| スキルが固定構造のレポートを生成する | `assets/` にレポートテンプレートを作成 |
+| 参照コンテンツが100行を超える | 条件付き参照で `references/` に移動 |
+| バリデーションに実行可能なチェックが必要 | `scripts/` にバリデーションコードを作成 |
+| スキルが自己完結型でコンパクト | 補助ディレクトリ不要 |
 
-## Output Templates
+## 出力テンプレート
 
-Reuse templates in this skill's `assets/` directory:
-- `assets/agents-md-template.md` — AGENTS.md orchestrator template
-- `assets/skill-md-template.md` — SKILL.md sub-skill template
-- `assets/copilot-instructions-template.md` — copilot-instructions.md template
-- Refer to `references/suite-checklist.md` when validating completeness
+このスキルの `assets/` ディレクトリのテンプレートを再利用:
+- `assets/agents-md-template.md` — AGENTS.md オーケストレーターテンプレート
+- `assets/skill-md-template.md` — SKILL.md サブスキルテンプレート
+- `assets/copilot-instructions-template.md` — copilot-instructions.md テンプレート
+- 完全性の検証時に `references/suite-checklist.md` を参照
 
 ## Gotchas
 
@@ -107,7 +107,7 @@ Reuse templates in this skill's `assets/` directory:
 - スイート構成のルート Orchestrator は AGENTS.md にすること（SKILL.md ではない）。デプロイ先は `.github/AGENTS.md`
 - assets/ のテンプレートは「構造」を提供するもの。具体的なデータは含めない
 
-## Validation Loop
+## 検証ループ
 
 1. 生成したパッケージを確認
 2. **Phase 1: 構造チェック**:

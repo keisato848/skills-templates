@@ -1,28 +1,28 @@
 # description-optimizer
 
-Agent Skill description field optimization for maximum routing precision and discovery accuracy.
+Agent Skill の description フィールドを最適化し、ルーティング精度と発見精度を最大化するスキル。
 
-## What It Does
+## 機能
 
-Analyzes and optimizes the `description` field in SKILL.md frontmatter to ensure skills are correctly discovered and activated by the AI agent. Detects keyword overlaps between skills and generates improved descriptions with clear trigger conditions.
+SKILL.md フロントマターの `description` フィールドを分析・最適化し、AI エージェントがスキルを正しく発見・起動できるようにする。スキル間のキーワード重複を検出し、明確な起動条件を持つ改善版 description を生成する。
 
-## When to Use
+## 使用場面
 
-- A skill is not being activated when it should be (dead skill).
-- Multiple skills compete for the same trigger keywords.
-- Improving Tool Coverage score in a Harness audit.
-- Setting up a new multi-skill suite where descriptions need keyword separation.
+- スキルが起動すべき場面で起動しない（死蔵スキル）
+- 複数のスキルが同じ起動キーワードで競合している
+- Harness 監査で Tool Coverage スコアを改善したい
+- 新しいマルチスキルスイートで description のキーワード棲み分けが必要
 
-## How It Works
+## 動作の流れ
 
-1. **Analyze**: Parse current description for "what it does" + "Use when" structure.
-2. **Compare**: Check for keyword overlaps with sibling skills in the same suite.
-3. **Optimize**: Generate improved description with separated keywords and explicit trigger conditions.
-4. **Validate**: Confirm no keyword collisions, 1024-char limit, and proper 2-part structure.
+1. **分析**: 現在の description を「何をするか」+「Use when」構成で解析
+2. **比較**: 同一スイート内の兄弟スキルとキーワード重複を検出
+3. **最適化**: キーワードを棲み分け、明確な起動条件を持つ改善版を生成
+4. **検証**: キーワード競合なし、1024文字以内、2部構成を確認
 
-## Key Principles
+## 基本原則
 
-- Descriptions are written for the **LLM routing engine**, not human readers.
-- Every description must contain both "what it does" AND "Use when..." trigger conditions.
-- Keywords between sibling skills must be **mutually exclusive** (no overlap).
-- Keyword categories: planning, collecting, analyzing, generating, validating, optimizing.
+- description は**人間向け**ではなく **LLM ルーティングエンジン向け**に書く
+- すべての description に「何をするか」と「Use when（起動条件）」の両方を含める
+- 兄弟スキル間のキーワードは**相互排他**（重複なし）にする
+- キーワードカテゴリ: 計画系、収集系、分析系、生成系、検証系、最適化系

@@ -1,11 +1,11 @@
 ---
 name: harness-auditor
 description: >
-  Audit Agent Skills and their environment against the Harness 7-axis framework.
-  Evaluates AGENTS.md orchestration, SKILL.md quality, assets/references usage,
-  MCP configuration, and Custom Agent design.
-  Use when evaluating skill quality, scoring harness maturity, diagnosing
-  why a skill underperforms, or running a pre-release harness review.
+  Agent Skills とその環境を Harness 7軸フレームワークで監査する。
+  AGENTS.md オーケストレーション、SKILL.md 品質、assets/references の活用、
+  MCP 設定、Custom Agent 設計を評価する。
+  スキル品質の評価、Harness 成熟度のスコアリング、スキルの性能不足診断、
+  リリース前の Harness レビュー実施時に使用する。
 metadata:
   author: coreclaw
   version: "2.0"

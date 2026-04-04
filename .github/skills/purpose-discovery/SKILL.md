@@ -1,29 +1,28 @@
 ---
 name: purpose-discovery
 description: >
-  Discover the true objective for Agent Skills development through structured
-  one-question-at-a-time dialogue. Extracts requirements, structures prompts,
-  and generates optimized specifications before skill generation begins.
-  Use when a user's skill development request is ambiguous, lacks detail,
-  or needs clarification before generating Agent Skills packages.
+  1問1答の構造化ダイアログを通じて Agent Skills 開発の真の目的を発見する。
+  要件を抽出し、プロンプトを構造化し、スキル生成前に最適化された仕様書を生成する。
+  ユーザーのスキル開発リクエストが曖昧、詳細不足、または Agent Skills
+  パッケージ生成前に明確化が必要な場合に使用する。
 metadata:
   author: coreclaw
   version: "1.0"
 ---
 
-# Purpose Discovery for Skills Development
+# スキル開発のための Purpose Discovery
 
-Clarify the user's true objective and generate an optimized specification before skill generation.
+ユーザーの真の目的を明確にし、スキル生成前に最適化された仕様書を生成する。
 
-## Use This Skill When
+## このスキルを使用する場面
 
-- A user requests Agent Skills development but the request is vague.
-- Key information (domain, audience, workflows, integrations) is missing.
-- Requirements need structuring before generation begins.
+- ユーザーが Agent Skills 開発を依頼したが、リクエストが曖昧
+- 重要な情報（ドメイン、対象ユーザー、ワークフロー、連携先）が不足している
+- 生成開始前に要件を構造化する必要がある
 
-## Workflow
+## ワークフロー
 
-### Phase 1: Information Sufficiency Check
+### Phase 1: 情報充足度チェック
 
 Evaluate the user's input against these 8 required elements:
 
@@ -58,59 +57,59 @@ Evaluate the user's input against these 8 required elements:
 Compile into optimized specification:
 
 ```markdown
-# Agent Skills Development Specification
+# Agent Skills 開発仕様書
 
-## Objective
-[One-sentence purpose statement]
+## 目的
+[目的の一文要約]
 
-## Domain & Audience
-- Domain: [domain]
-- Primary users: [audience]
+## ドメインと対象ユーザー
+- ドメイン: [ドメイン]
+- 主なユーザー: [対象ユーザー]
 
-## Architecture
-- Type: [Single / Suite]
-- Sub-skills: [list]
-- Custom Agents: [list with roles]
+## アーキテクチャ
+- 種別: [単体 / スイート]
+- サブスキル: [一覧]
+- Custom Agents: [役割付き一覧]
 
-## Workflow Phases
-| Phase | Sub-skill | Description | Gate |
-|-------|-----------|-------------|------|
-| 0 | [name] | [desc] | ⏸️/auto |
+## ワークフローのフェーズ
+| Phase | サブスキル | 説明 | ゲート |
+|-------|-----------|------|------|
+| 0 | [名前] | [説明] | ⏸️/自動 |
 
-## Integrations
-- MCP: [list or none]
-- Databases: [list or none]
+## 連携
+- MCP: [一覧またはなし]
+- データベース: [一覧またはなし]
 
-## Reference Model
-- Based on: [existing group or none]
+## 参考モデル
+- 基準: [既存グループまたはなし]
 
-## Quality Criteria
-- [criteria]
+## 品質基準
+- [基準]
 
-## Assumptions
-- [any assumptions from incomplete info]
+## 仮定事項
+- [情報不足からの仮定]
 ```
 
-### Phase 4: User Approval ⏸️
+### Phase 4: ユーザー承認 ⏸️
 
-Present specification and wait for approval.
-- Approved → pass to `skill-scaffolder`.
-- Modifications → update and re-present.
+仕様書を提示し、承認を待つ。
+- 承認 → `skill-scaffolder` に渡す
+- 修正要求 → 更新して再提示
 
-## Deliverables
+## 成果物
 
-- Structured specification (input for skill-scaffolder).
-- `results/skill-spec.md` (saved for reference).
+- 構造化仕様書（skill-scaffolder への入力）
+- `results/skill-spec.md`（参照用に保存）
 
 ## Quality Gates
 
-- [ ] PURPOSE is clear and actionable.
-- [ ] At least 5/8 elements explicitly addressed.
-- [ ] Specification uses standard template format.
-- [ ] User approved specification before generation begins.
-- [ ] Assumptions are explicitly stated.
+- [ ] PURPOSE が明確かつ実行可能
+- [ ] 8要素中5つ以上が明示的に対応されている
+- [ ] 仕様書が標準テンプレート形式を使用している
+- [ ] 生成開始前にユーザーが仕様書を承認している
+- [ ] 仮定事項が明示されている
 
-If any gate fails: return to Phase 2 dialogue.
+いずれかのゲートが不合格の場合: Phase 2 のダイアログに戻る。
 
 ## Gotchas
 
@@ -120,9 +119,9 @@ If any gate fails: return to Phase 2 dialogue.
 - 8ラウンドで情報が揃わない場合は仮定を明記して進む。無限ループに入らないこと
 - 既存スイートを参考にする場合も、ユーザー目的に合わせてカスタマイズすること
 
-## Validation Loop
+## 検証ループ
 
-1. Sufficiency Check を実行
+1. 充足度チェックを実行
 2. チェック: 5/8要素が明確か、PURPOSE が具体的か
 3. 不足 → 1問1答で追加ヒアリング
 4. ユーザー承認後のみスキル生成に進む

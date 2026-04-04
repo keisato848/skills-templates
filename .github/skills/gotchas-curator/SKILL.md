@@ -1,10 +1,10 @@
 ---
 name: gotchas-curator
 description: >
-  Capture learnings, edge cases, and pitfalls from completed tasks and
-  maintain Gotchas sections in Agent Skills for Memory Persistence.
-  Use when finishing a task, resolving a bug, completing a review, or
-  when an agent made a mistake that should be prevented in future sessions.
+  完了したタスクから学び・エッジケース・落とし穴を収集し、
+  Agent Skills の Gotchas セクションを Memory Persistence のために管理する。
+  タスク完了時、バグ解決時、レビュー完了時、またはエージェントが
+  将来のセッションで防ぐべきミスをした場合に使用する。
 metadata:
   author: coreclaw
   version: "1.0"

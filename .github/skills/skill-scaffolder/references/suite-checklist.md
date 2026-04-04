@@ -1,55 +1,55 @@
-# Suite Completeness Checklist
+# スイート完全性チェックリスト
 
-Read this reference when validating that a generated suite is complete.
+生成したスイートの完全性を検証する際にこのリファレンスを読む。
 
-## Required Files
+## 必須ファイル
 
-### Metadata (all suites)
-- [ ] `README.md` — group description, version, sub-skill count
-- [ ] `group.json` — name, description, icon, count
-- [ ] `skill.json` — name, version, description, entrypoint: "AGENTS.md"
+### メタデータ（全スイート必須）
+- [ ] `README.md` — グループ説明、バージョン、サブスキル数
+- [ ] `group.json` — 名前、説明、アイコン、カウント
+- [ ] `skill.json` — 名前、バージョン、説明、entrypoint: "AGENTS.md"
 
-### Orchestration (all suites)
-- [ ] `AGENTS.md` — WHEN/DO routing, task classification, phase gates, urgency triage, prohibited operations, Gotchas, verification loop
+### オーケストレーション（全スイート必須）
+- [ ] `AGENTS.md` — WHEN/DO ルーティング、タスク分類、Phase ゲート、緊急度トリアージ、禁止事項、Gotchas、検証ループ
 
-### Instructions (recommended)
-- [ ] `copilot-instructions.md` — language rules, file-first policy, verification loop, agent table, Gotchas
+### 指示書（推奨）
+- [ ] `copilot-instructions.md` — 言語ルール、ファイル優先ポリシー、検証ループ、エージェントテーブル、Gotchas
 
-### Custom Agents (recommended)
-- [ ] At least 1 orchestration agent (full tools)
-- [ ] At least 1 read-only audit agent (read/search only)
-- [ ] Each agent has: name, description, tools list, role description, workflow, constraints
+### Custom Agents（推奨）
+- [ ] オーケストレーション用エージェントが最低1体（全ツールアクセス）
+- [ ] 読み取り専用監査エージェントが最低1体（読み取り/検索のみ）
+- [ ] 各エージェントに: 名前、説明、ツールリスト、役割説明、ワークフロー、制約がある
 
-### Sub-skills (required)
-- [ ] Each in `skills/<suite-name>-<suffix>/SKILL.md`
-- [ ] Each has: name, description (with "Use when"), workflow, deliverables, quality gates, Gotchas (3+), validation loop
-- [ ] Folder name matches `name` field
-- [ ] Each ≤ 500 lines
+### サブスキル（必須）
+- [ ] 各スキルが `skills/<スイート名>-<接尾辞>/SKILL.md` に配置
+- [ ] 各スキルに: name、description（「Use when」含む）、ワークフロー、成果物、Quality Gates、Gotchas（3項目以上）、検証ループ
+- [ ] フォルダ名が `name` フィールドと一致
+- [ ] 各スキルが500行以内
 
-### MCP (if external tools needed)
-- [ ] `.mcp.json` with server configuration
-- [ ] `tu_tools` in relevant SKILL.md frontmatter
-- [ ] "Available Tools (MCP)" section in relevant SKILL.md
-- [ ] Fallback procedure documented
+### MCP（外部ツールが必要な場合）
+- [ ] `.mcp.json` にサーバー設定
+- [ ] 関連 SKILL.md のフロントマターに `tu_tools`
+- [ ] 関連 SKILL.md に「利用可能ツール（MCP）」セクション
+- [ ] MCP 利用不可時のフォールバック手順が記載
 
-### Supplementary Directories (as needed)
-- [ ] `assets/` templates referenced from SKILL.md
-- [ ] `references/` docs with conditional references only
-- [ ] `scripts/` with executable validation/transformation code
+### 補助ディレクトリ（必要に応じて）
+- [ ] `assets/` テンプレートが SKILL.md から参照されている
+- [ ] `references/` ドキュメントが条件付き参照のみ
+- [ ] `scripts/` に実行可能なバリデーション/変換コード
 
-## Quality Checks
+## 品質チェック
 
-### Harness 7-Axis Coverage
-- [ ] Tool Coverage: WHEN/DO routing covers all request types
-- [ ] Context Efficiency: all SKILL.md ≤ 500 lines, conditional references
-- [ ] Quality Gates: validation loop in every skill
-- [ ] Memory Persistence: Gotchas 3+ in every file, learning-capture skill
-- [ ] Eval Coverage: failure recovery in validation loops
-- [ ] Security Guardrails: prohibited operations, data handling rules
-- [ ] Cost Efficiency: description keywords don't overlap between skills
+### Harness 7軸カバレッジ
+- [ ] Tool Coverage: WHEN/DO ルーティングが全リクエスト種別をカバー
+- [ ] Context Efficiency: 全 SKILL.md が500行以内、条件付き参照
+- [ ] Quality Gates: 全スキルに検証ループ
+- [ ] Memory Persistence: 全ファイルに Gotchas 3項目以上、学び収集スキル
+- [ ] Eval Coverage: 検証ループに失敗時リカバリ
+- [ ] Security Guardrails: 禁止事項、データ取り扱いルール
+- [ ] Cost Efficiency: スキル間で description キーワードが重複しない
 
-### Naming Conventions
-- [ ] Skill names: lowercase alphanumeric + hyphens, ≤ 64 chars
-- [ ] No leading/trailing hyphens, no double hyphens
-- [ ] Suite prefix: all sub-skills share `<suite-name>-` prefix
-- [ ] Folder name = `name` field in every SKILL.md
+### 命名規約
+- [ ] スキル名: 小文字英数字 + ハイフンのみ、64文字以内
+- [ ] 先頭/末尾のハイフンなし、連続ハイフンなし
+- [ ] スイートプレフィックス: 全サブスキルが `<スイート名>-` プレフィックスを共有
+- [ ] フォルダ名 = 全 SKILL.md の `name` フィールドと一致
