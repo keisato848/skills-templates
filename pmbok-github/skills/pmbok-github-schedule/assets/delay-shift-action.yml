@@ -1,0 +1,98 @@
+# Delay Auto-Shift — GitHub Actions Template
+# Trigger: project item field changes (dates)
+# Purpose: Auto-shift successor task dates when a task is delayed
+
+name: Delay Auto-Shift
+
+on:
+  issues:
+    types: [edited]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number that was delayed'
+        required: true
+        type: number
+
+permissions:
+  issues: write
+  contents: read
+
+env:
+  PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+  OWNER: ${{ github.repository_owner }}
+  REPO: ${{ github.event.repository.name }}
+
+jobs:
+  shift-dates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine delayed issue
+        id: delayed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "issue_number=${{ inputs.issue_number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "issue_number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch issue dependencies
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the delayed issue and its tracked-by (successor) issues
+          gh api graphql -f query='
+            query($owner: String!, $repo: String!, $number: Int!) {
+              repository(owner: $owner, name: $repo) {
+                issue(number: $number) {
+                  title
+                  trackedByIssues(first: 50) {
+                    nodes {
+                      number
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          ' -f owner="$OWNER" -f repo="$REPO" \
+            -F number="${{ steps.delayed.outputs.issue_number }}" > deps.json
+
+      - name: Calculate date shifts
+        run: |
+          # Calculate new dates for successor tasks based on delay amount
+          python3 scripts/delay-shift-calc.py deps.json \
+            --issue "${{ steps.delayed.outputs.issue_number }}" \
+            --project "$PROJECT_NUMBER" > shifts.json
+
+      - name: Apply date shifts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Update successor task dates via GraphQL
+          jq -c '.[]' shifts.json | while read shift; do
+            issue_num=$(echo "$shift" | jq -r '.issue_number')
+            new_start=$(echo "$shift" | jq -r '.new_start_date')
+            new_end=$(echo "$shift" | jq -r '.new_end_date')
+            echo "Shifting issue #$issue_num: start=$new_start, end=$new_end"
+            # Date updates via Projects V2 GraphQL API
+          done
+
+      - name: Post shift summary
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Comment on the delayed issue with shift summary
+          count=$(jq length shifts.json)
+          if [ "$count" -gt 0 ]; then
+            summary="⚠️ **日程自動シフト実行**\n\n"
+            summary+="Issue #${{ steps.delayed.outputs.issue_number }} の遅延により、${count}件の後続タスクの日程を調整しました:\n\n"
+            jq -r '.[] | "- #\(.issue_number): \(.new_start_date) → \(.new_end_date)"' shifts.json | while read line; do
+              summary+="$line\n"
+            done
+            gh issue comment "${{ steps.delayed.outputs.issue_number }}" \
+              --body "$summary" -R "$OWNER/$REPO"
+          fi

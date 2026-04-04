@@ -1,0 +1,7 @@
+{
+  "name": "pmbok-github",
+  "displayName": "PMBOK GitHub Manager",
+  "description": "GitHub上でPMBOK知識エリアに基づくプロジェクト管理を実現するAgent Skillsスイート",
+  "icon": "📊",
+  "skillCount": 6
+}
