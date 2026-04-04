@@ -1,0 +1,7 @@
+{
+  "name": "dotnet-test-generator",
+  "displayName": ".NET Unit Test Generator",
+  "description": "C# ソースファイルを解析し、xUnit ベースのユニットテストコードを AAA パターンで一括生成する Agent Skill",
+  "icon": "🧪",
+  "skillCount": 1
+}

@@ -1,0 +1,9 @@
+{
+  "name": "dotnet-test-generator",
+  "version": "0.1.0",
+  "description": "C# ソースファイルを解析し、xUnit ベースのユニットテストコードを AAA パターンで一括生成する Agent Skill。",
+  "entrypoint": "skills/dotnet-test-generator/SKILL.md",
+  "skills": [
+    "dotnet-test-generator"
+  ]
+}
