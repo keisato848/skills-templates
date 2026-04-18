@@ -1,0 +1,7 @@
+{
+  "name": "qiita-publisher",
+  "displayName": "Qiita Publisher",
+  "description": "Qiita 記事の企画・作成・ブラウザ操作投稿を一貫して行う Agent Skills スイート。コンテンツ生成からタグ選定、下書き保存、キャンペーン登録、公開までを自動化する。",
+  "icon": "📝",
+  "skillCount": 2
+}

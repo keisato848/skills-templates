@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "dads-design-system": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["design-system-mcp/dist/index.js"]
+    }
+  }
+}

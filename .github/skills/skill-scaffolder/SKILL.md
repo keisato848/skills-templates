@@ -96,7 +96,25 @@ Harness 最適化された Agent Skill パッケージを生成する——単�
 - `assets/agents-md-template.md` — AGENTS.md オーケストレーターテンプレート
 - `assets/skill-md-template.md` — SKILL.md サブスキルテンプレート
 - `assets/copilot-instructions-template.md` — copilot-instructions.md テンプレート
+- `assets/prompt-md-template.md` — VS Code `.prompt.md` テンプレート（スイート/単体/読み取り専用の3種）
 - 完全性の検証時に `references/suite-checklist.md` を参照
+
+### プロンプト生成（必須）
+
+スキル/スイート生成完了後、必ず対応する `.prompt.md` を生成すること。
+
+1. `assets/prompt-md-template.md` を読み込みテンプレートを選択:
+   - スイート → **テンプレート A（スイート用）**
+   - 単体スキル → **テンプレート B（単体スキル用）**
+   - 読み取り専用エージェント → **テンプレート C（読み取り専用用）**
+
+2. 生成先:
+   - **リポジトリ管理用**: `<suite-name>/assets/prompts/<suite-name>.prompt.md`
+   - **VS Code ユーザー登録用**: `%APPDATA%\Code\User\prompts\`（Windows） / `~/.config/Code/User/prompts/`（macOS/Linux）
+   - 開発支援メタスキル: `.github/assets/prompts/<skill-name>.prompt.md`
+
+3. `description` フィールドは `SKILL.md` の description に基づいて簡潔に記述
+4. `tools` はスキルの操作種別に応じて最小限に絞る（ファイル不要なら `editFiles` を除外）
 
 ## Gotchas
 
@@ -127,6 +145,13 @@ Harness 最適化された Agent Skill パッケージを生成する——単�
    - [ ] assets/references が SKILL.md から条件付きで参照されているか
    - [ ] 不要な空ディレクトリが残っていないか
    → 不足がある場合: assets/references/scripts を作成し、SKILL.md に条件付き参照を追加
+
+4. **Phase 3: プロンプト生成チェック**:
+   - [ ] スイート/スキルに対応する `.prompt.md` が `assets/prompts/` に存在するか
+   - [ ] `description` フィールドが一行で起動条件を含んでいるか
+   - [ ] `tools` が最小限に絞られているか（不要なツールを含めない）
+   - [ ] 使い方の例が3件以上あるか
+   → 不足がある場合: `assets/prompt-md-template.md` を参照して生成
 
 4. **Phase 3: Harness 7軸チェック（3/3 目標）**:
 

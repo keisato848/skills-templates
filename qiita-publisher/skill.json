@@ -1,0 +1,10 @@
+{
+  "name": "qiita-publisher",
+  "version": "0.1.0",
+  "description": "Qiita 記事の企画・コンテンツ生成・ブラウザ操作での投稿を一貫して行う Agent Skills スイート。技術記事の構成設計、Markdown 本文生成、Qiita エディタへの入力、下書き保存、セルフレビュー、キャンペーン登録、記事公開までをカバーする。",
+  "entrypoint": "AGENTS.md",
+  "skills": [
+    "qiita-compose",
+    "qiita-post"
+  ]
+}

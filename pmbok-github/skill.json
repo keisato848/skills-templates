@@ -1,0 +1,14 @@
+{
+  "name": "pmbok-github",
+  "version": "0.1.0",
+  "description": "PMBOK知識エリアに基づくGitHubプロジェクト管理スイート。スケジュール・コスト・品質・リスク・リソース・ステークホルダー管理をGitHub Projects + Actionsで実現する。",
+  "entrypoint": "AGENTS.md",
+  "skills": [
+    "pmbok-github-init",
+    "pmbok-github-schedule",
+    "pmbok-github-cost",
+    "pmbok-github-quality",
+    "pmbok-github-risk",
+    "pmbok-github-report"
+  ]
+}
