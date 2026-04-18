@@ -1,7 +1,7 @@
 ---
 description: '.NET プロジェクトの xUnit テストコードを自動生成する。対象クラスを分析し、正常系・異常系・境界値テストを網羅的に作成。'
-mode: 'agent'
-tools: ['codebase', 'editFiles', 'terminal', 'changes']
+agent: 'agent'
+tools: ['search/codebase', 'edit/editFiles', 'search/changes']
 ---
 
 # .NET Unit Test Generator

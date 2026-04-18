@@ -1,7 +1,7 @@
 ---
 description: 'Agent Skill の新規作成ワークフロー。Purpose Discovery → Scaffold → Harness Audit を一貫実行する。'
-mode: 'agent'
-tools: ['codebase', 'editFiles', 'terminal', 'changes', 'fetch']
+agent: 'agent'
+tools: ['search/codebase', 'edit/editFiles', 'search/changes', 'web/fetch']
 ---
 
 # Agent Skill 開発ワークフロー

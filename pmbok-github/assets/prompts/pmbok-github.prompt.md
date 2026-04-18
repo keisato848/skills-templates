@@ -1,7 +1,7 @@
 ---
 description: 'PMBOK準拠のGitHubプロジェクト管理。Issue/Milestone/Labelの設計・作成・リスク分析・品質監査を実行する。'
-mode: 'agent'
-tools: ['githubRepo', 'changes', 'codebase', 'editFiles', 'terminal', 'fetch']
+agent: 'agent'
+tools: ['githubRepo', 'search/changes', 'search/codebase', 'edit/editFiles', 'web/fetch']
 ---
 
 # PMBOK GitHub プロジェクト管理

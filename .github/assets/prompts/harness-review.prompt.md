@@ -1,7 +1,7 @@
 ---
 description: 'Agent Skills の Harness 7軸品質監査を実施する。読み取り専用でスコアリングと改善提案を行う。'
-mode: 'agent'
-tools: ['codebase']
+agent: 'agent'
+tools: ['search/codebase']
 ---
 
 # Harness 品質レビュー

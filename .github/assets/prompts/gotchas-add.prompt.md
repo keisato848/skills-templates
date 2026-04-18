@@ -1,7 +1,7 @@
 ---
 description: 'タスク完了時の学び・エッジケース・落とし穴をスキルの Gotchas セクションに記録する。'
-mode: 'agent'
-tools: ['codebase', 'editFiles']
+agent: 'agent'
+tools: ['search/codebase', 'edit/editFiles']
 ---
 
 # Gotchas 記録
